@@ -68,8 +68,10 @@ puglWinCairoClose(PuglView* view)
   PuglInternals* const       impl    = view->impl;
   PuglWinCairoSurface* const surface = (PuglWinCairoSurface*)impl->surface;
 
+  cairo_destroy(surface->cr);
   cairo_surface_destroy(surface->surface);
 
+  surface->cr      = NULL;
   surface->surface = NULL;
 }
 
